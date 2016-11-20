@@ -9,7 +9,7 @@ RUN curl -sL -0 https://services.gradle.org/distributions/gradle-${GRADLE_VERSIO
     ln -sf /usr/local/gradle/bin/gradle /usr/local/bin/gradle
 ENV PATH=/opt/maven/bin/:/opt/gradle/bin/:$PATH
 USER 1001
-
+COPY ./sti/bin/assemble /usr/local/sti/assemble
 LABEL io.k8s.description="Platform for building gradle base jws applications with maven or gradle" \
       io.k8s.display-name="webserver S2I builder" \
       io.openshift.expose-services="8080:http" \
