@@ -8,8 +8,9 @@ RUN curl -sL -0 https://services.gradle.org/distributions/gradle-${GRADLE_VERSIO
     mv /usr/local/gradle-${GRADLE_VERSION} /usr/local/gradle && \
     ln -sf /usr/local/gradle/bin/gradle /usr/local/bin/gradle
 ENV PATH=/opt/maven/bin/:/opt/gradle/bin/:$PATH
+COPY .s2i/bin/assemble /usr/local/s2i/
+RUN chmod 755 /usr/local/s2i /usr/local/s2i/*
 USER 1001
-COPY .s2i/bin/assemble /usr/local/sti/assemble
 LABEL io.k8s.description="Platform for building gradle base jws applications with maven or gradle" \
       io.k8s.display-name="webserver S2I builder" \
       io.openshift.expose-services="8080:http" \
