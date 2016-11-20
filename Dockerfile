@@ -1,4 +1,4 @@
-FROM boss-webserver-3/webserver30-tomcat8-openshift:latest
+FROM jboss-webserver-3/webserver30-tomcat8-openshift:latest
 MAINTAINER imk@redhat.com
 ENV GRADLE_VERSION 2.6
 RUN curl -sL -0 https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -o /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
