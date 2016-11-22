@@ -81,6 +81,8 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
     gradle --version
 
     # Execute the actual build
+    echo "Start gradle build "
+
     gradle -s $BUILDER_ARGS
 
     ERR=$?
@@ -88,6 +90,8 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
       echo "Aborting due to error code $ERR from Gradle build"
       exit $ERR
     fi
+    echo "Finish gradle build "
+
    echo "should deploy $ARTIFACT_DIR "
     # Copy built artifacts (if any!) from the target/ directory
     # (or $ARTIFACT_DIR if specified)
@@ -96,8 +100,8 @@ if [ -f "$LOCAL_SOURCE_DIR/pom.xml" ]; then
 
 
     # clean up after maven
-     echo "cleanning up "
-  #  gradle clean
+    echo "cleanning up "
+    gradle clean
   #  if [ -d "$HOME/.m2/repository" ]; then
   #    rm -r "$HOME/.m2/repository"
   #  fi
